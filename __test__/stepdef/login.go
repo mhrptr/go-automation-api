@@ -58,9 +58,6 @@ func GetEndpoint() error {
 func PostEndpoint(email, password string) error {
 	var err error
 
-	fmt.Println(email)
-	fmt.Println(password)
-
 	body := []byte(
 		`{
 			"email": "` + email + `",
