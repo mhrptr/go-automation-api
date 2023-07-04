@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"./__test__/stepdef"
+	"go-automation-api/__test__/stepdef"
 
 	"github.com/cucumber/godog"
 	"github.com/joho/godotenv"

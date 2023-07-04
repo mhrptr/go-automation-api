@@ -5,7 +5,7 @@ go 1.20
 require (
 	github.com/cucumber/godog v0.12.6
 	github.com/joho/godotenv v1.5.1
-	example.com/go-automation-api v1.0.0
+	github.com/yalp/jsonpath v0.0.0-20180802001716-5cc68e5049a0
 )
 
 require (

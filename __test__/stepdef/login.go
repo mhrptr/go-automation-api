@@ -9,12 +9,13 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/basic-golang-api-automation/features/helper"
+	"go-automation-api/__test__/helper"
+
 	"github.com/cucumber/godog"
 	"github.com/yalp/jsonpath"
 )
 
-var urlEndpoint, contentBody string
+var urlEndpoint string
 var getEndpoint, postEndpoint, putEndpoint, deleteEndpoint *http.Request
 var getResponse, postResponse, putResponse, deleteResponse *http.Response
 var id interface{}
@@ -54,7 +55,7 @@ func GetEndpoint() error {
 }
 
 // PostEndpoint : hit endpoint post
-func PostEndpoint(contentBody) error {
+func PostEndpoint(contentBody string) error {
 	var err error
 
 	body := []byte(contentBody)
@@ -72,7 +73,7 @@ func PostEndpoint(contentBody) error {
 }
 
 // PutEndpoint : hit endpoint put
-func PutEndpoint(contentBody) error {
+func PutEndpoint(contentBody string) error {
 	var err error
 
 	body := []byte(contentBody)
@@ -90,7 +91,7 @@ func PutEndpoint(contentBody) error {
 }
 
 // DeleteEndpoint : hit endpoint delete
-func DeleteEndpoint(contentBody) error {
+func DeleteEndpoint(contentBody string) error {
 	var err error
 
 	body := []byte(contentBody)
