@@ -55,10 +55,17 @@ func GetEndpoint() error {
 }
 
 // PostEndpoint : hit endpoint post
-func PostEndpoint(contentBody string) error {
+func PostEndpoint(email, password string) error {
 	var err error
 
-	body := []byte(contentBody)
+	fmt.Println(email)
+	fmt.Println(password)
+
+	body := []byte(
+		`{
+			"email": "` + email + `",
+			"password": "` + password + `"
+		}`)
 
 	client := &http.Client{}
 	postEndpoint, err := http.NewRequest(http.MethodPost, urlEndpoint, bytes.NewBuffer(body))
@@ -107,7 +114,7 @@ func DeleteEndpoint(contentBody string) error {
 
 // ValidatePostResponse : validate endpoint post response
 func ValidatePostResponse() error {
-	if postResponse.StatusCode != 201 {
+	if postResponse.StatusCode != 200 {
 		log.Panicln("POST - Error code tidak sesuai")
 	}
 
@@ -115,7 +122,7 @@ func ValidatePostResponse() error {
 }
 
 func LoginSteps(ctx *godog.ScenarioContext) {
-	ctx.Step(`base url with endpoint "([^"]*)"$`, GetEndpoint)
-	ctx.Step(`hit POST request with the following data: "([^"]*)"$`, PostEndpoint)
+	ctx.Step(`base url with endpoint "([^"]*)"$`, GivenEndpoint)
+	ctx.Step(`hit POST request with email "([^"]*)" and password "([^"]*)"$`, PostEndpoint)
 	ctx.Step(`validate POST response`, ValidatePostResponse)
 }

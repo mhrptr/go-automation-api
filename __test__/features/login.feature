@@ -7,11 +7,5 @@ Feature: Login API
 
   Scenario: Successful login
     Given base url with endpoint "/login/email"
-    When hit POST request with the following data:
-      """
-      {
-        "username": "myusername",
-        "password": "mypassword"
-      }
-      """
+    When hit POST request with email "muharram.samsuddin@kompas.com" and password "kompas1234"
     Then validate POST response
